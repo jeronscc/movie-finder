@@ -42,7 +42,6 @@ function Home() {
         setLoading(false)
     }
 
-    setSearchQuery("");
   };
 
   return (

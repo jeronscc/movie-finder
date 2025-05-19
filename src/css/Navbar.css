@@ -18,15 +18,28 @@
 }
 
 .nav-link {
+  position: relative;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  color: white;
+  text-decoration: none;
 }
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background-color: red;
+  transition: width 0.3s ease-in-out;
 }
+
+.nav-link:hover::after {
+  width: 100%;
+} 
+
 
 @media (max-width: 768px) {
   .navbar {
