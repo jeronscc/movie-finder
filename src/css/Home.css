@@ -34,7 +34,7 @@
 
 .search-button {
   padding: 0 1.5rem;
-  background-color: #e50914; /* Netflix red */
+  background-color: #a00d19; 
   border: none;
   border-radius: 0 4px 4px 0;
   color: white;
@@ -44,7 +44,7 @@
 }
 
 .search-button:hover {
-  background-color: #bf0810; /* slightly darker red on hover */
+  background-color: #77070d;  
 }
 
 @media (max-width: 639px) {
