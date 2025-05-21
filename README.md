@@ -1,12 +1,62 @@
-# React + Vite
+## Setup Instructions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 1. Clone the Repository
+   
+```bash
+git clone https://github.com/jeronscc/now-showing.git
+cd now-showing
+```
 
-Currently, two official plugins are available:
+### 2. Install Dependencies
+   
+```bash
+npm install
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 3. TMDB API Setup
 
-## Expanding the ESLint configuration
+You need an API key from The Movie Database (TMDB):
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Sign up/log in at [https://www.themoviedb.org/](https://www.themoviedb.org/)
+- Go to your API settings
+- Copy your API key (v3 auth)
+
+Create a `.env` file in the root directory with the following content, following the format in `.env.example`:
+```env
+# Example environment variables
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+```
+
+### 4. Start the Development Server
+   
+```bash
+npm run dev
+```
+
+Open your browser and go to the localhost URL shown in your terminal (e.g., `http://localhost:5173/`).
+
+## Project Structure
+
+```plaintext
+src/
+├── components/
+│   ├── MovieCard.jsx
+│   ├── MovieModal.jsx
+│   ├── NavBar.jsx
+├── contexts/
+│   └── MovieContext.jsx
+├── services/
+│   └── api.js
+├── css/
+│   ├── App.css
+│   ├── Favorites.css
+│   ├── Home.css
+│   ├── index.css
+│   ├── MovieCard.css
+│   ├── MovieModal.css
+│   └── NavBar.css
+├── pages/
+│   ├── Home.jsx
+│   └── Favorites.jsx
+├── App.jsx
+└── index.js
