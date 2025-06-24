@@ -1,7 +1,11 @@
 import MovieCard from "../components/MovieCard";
 import MovieModal from "../components/MovieModal";
 import { useState, useEffect } from "react";
-import { searchMovies, getPopularMovies } from "../services/api.js";
+import {
+  searchMovies,
+  getPopularMovies,
+  getMovieTrailerKey,
+} from "../services/api.js";
 import "../css/Home.css";
 
 function Home() {
@@ -45,8 +49,14 @@ function Home() {
     }
   };
 
-  const handleMovieClick = (movie) => {
-    setSelectedMovie(movie);
+  const handleMovieClick = async (movie) => {
+    try {
+      const trailerKey = await getMovieTrailerKey(movie.id);
+      setSelectedMovie({ ...movie, trailerKey }); // Attach trailerKey to the selected movie
+    } catch (error) {
+      console.error("Error fetching trailer:", error);
+      setSelectedMovie({ ...movie, trailerKey: null }); // Still set the movie if trailer fails
+    }
   };
 
   return (

@@ -16,3 +16,15 @@ export const searchMovies = async (query) => {
   const data = await response.json();
   return data.results;
 };
+export const getMovieTrailerKey = async (movieId) => {
+  const response = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`);
+  const data = await response.json();
+
+  // Look for a video that is on YouTube and is a "Trailer"
+  const trailer = data.results.find(
+    (vid) => vid.site === "YouTube" && vid.type === "Trailer"
+  );
+
+  // Fallback to first video key if no "Trailer" found
+  return trailer ? trailer.key : data.results[0]?.key || null;
+};

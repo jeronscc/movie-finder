@@ -34,6 +34,7 @@ function MovieModal({ movie, onClose }) {
     vote_average,
     original_language,
     genre_ids,
+    trailerKey,
   } = movie;
 
   const year = release_date?.split("-")[0] || "N/A";
@@ -43,6 +44,13 @@ function MovieModal({ movie, onClose }) {
   const genreList =
     genre_ids && genre_ids.length > 0 ? genreMap[genre_ids[0]] || "N/A" : "N/A";
 
+  const handleWatchTrailer = () => {
+    if (trailerKey) {
+      window.open(`https://www.youtube.com/watch?v=${trailerKey}`, "_blank");
+    } else {
+      alert("Trailer not available.");
+    }
+  };
   return (
     <div className="movie-modal-overlay" onClick={onClose}>
       <div
@@ -61,7 +69,7 @@ function MovieModal({ movie, onClose }) {
             {year} • {language} • {rating}/10 • {genreList}
           </p>
           <p className="overview">{overview}</p>
-          <button className="watch-btn">▶ Watch Trailer</button>
+          <button className="watch-btn"onClick={handleWatchTrailer}>▶ Watch Trailer</button>
         </div>
       </div>
     </div>
